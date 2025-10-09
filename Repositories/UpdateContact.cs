@@ -1,22 +1,21 @@
-using AddressBook.Helpers;
+using AddressBook.Utilities;
 
 namespace AddressBook.Repositories
 {
     partial class ContactRepository
     {
-
         // METHOD TO UPDATE A CONTACT
         public void UpdateContact()
         {
             Console.Clear();
-            Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
+            Utilities.Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
             Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
 
             Console.WriteLine("[1] Update contact by search (name or address)\n");
             Console.WriteLine("[2] Update contact by list");
             Console.Write("\nYour choice: ");
-            string choice = Utilities.SafeReadLine().ToLower();
-            if (Utilities.Back(choice))
+            string choice = Utilities.Utilities.SafeReadLine().ToLower();
+            if (Utilities.Utilities.Back(choice))
                 return;
 
             // OPTION 1: UPDATE CONTACT BY SEARCH
@@ -24,12 +23,12 @@ namespace AddressBook.Repositories
             if (choice == "1")
             {
                 Console.Clear();
-                Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
+                Utilities.Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
                 Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
 
                 Console.Write("\nSearch name of contact: ");
-                string search = Utilities.SafeReadLine().ToLower();
-                if (Utilities.Back(search))
+                string search = Utilities.Utilities.SafeReadLine().ToLower();
+                if (Utilities.Utilities.Back(search))
                     return;
 
                 var contactsFound = contacts
@@ -45,7 +44,7 @@ namespace AddressBook.Repositories
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"({contactsFound.Count} results)");
                     Console.ResetColor();
-                    Utilities.Stop();
+                    Utilities.Utilities.Stop();
                     return;
                 }
 
@@ -56,15 +55,17 @@ namespace AddressBook.Repositories
                 foreach (var c in contactsFound)
                 {
                     Console.Write($"\nID: [{c.Id}] ");
-                    Utilities.HighlightMatch(c.FirstName, search);
+                    Utilities.Utilities.HighlightMatch(c.FirstName, search);
                     Console.Write(", ");
-                    Utilities.HighlightMatch(c.LastName, search);
-                    Console.Write($", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n");
+                    Utilities.Utilities.HighlightMatch(c.LastName, search);
+                    Console.Write(
+                        $", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n"
+                    );
                 }
 
                 Console.Write("\nEnter the ID of the contact you want to update: ");
-                string input = Utilities.SafeReadLine();
-                if (Utilities.Back(input))
+                string input = Utilities.Utilities.SafeReadLine();
+                if (Utilities.Utilities.Back(input))
                     return;
 
                 if (int.TryParse(input, out int id))
@@ -73,28 +74,28 @@ namespace AddressBook.Repositories
                     if (updateContact != null)
                     {
                         Console.Clear();
-                        Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
+                        Utilities.Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
                         Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
 
                         Console.Write("Enter new first name (leave blank to keep current): ");
-                        string firstName = Utilities.SafeReadLine();
-                        if (Utilities.Back(firstName))
+                        string firstName = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(firstName))
                             return;
                         if (!string.IsNullOrWhiteSpace(firstName))
                             updateContact.FirstName = firstName;
 
                         Console.Write("Enter new last name (leave blank to keep current): ");
-                        string lastName = Utilities.SafeReadLine();
-                        if (Utilities.Back(lastName))
+                        string lastName = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(lastName))
                             return;
-                        if (Utilities.Back(lastName))
+                        if (Utilities.Utilities.Back(lastName))
                             return;
                         if (!string.IsNullOrWhiteSpace(lastName))
                             updateContact.LastName = lastName;
 
                         Console.Write("Enter new address (leave blank to keep current): ");
-                        string address = Utilities.SafeReadLine();
-                        if (Utilities.Back(address))
+                        string address = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(address))
                             return;
 
                         if (!string.IsNullOrWhiteSpace(address))
@@ -103,8 +104,8 @@ namespace AddressBook.Repositories
                         Console.Write(
                             "Enter new ZIP code (must be 5 numbers, leave blank to keep current): "
                         );
-                        string zipCode = Utilities.SafeReadLine();
-                        if (Utilities.Back(zipCode))
+                        string zipCode = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(zipCode))
                             return;
 
                         if (!string.IsNullOrWhiteSpace(zipCode))
@@ -116,31 +117,31 @@ namespace AddressBook.Repositories
                         }
 
                         Console.Write("Enter new city (leave blank to keep current): ");
-                        string city = Utilities.SafeReadLine();
-                        if (Utilities.Back(city))
+                        string city = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(city))
                             return;
 
-                        if (Utilities.Back(city))
+                        if (Utilities.Utilities.Back(city))
                             return;
                         if (!string.IsNullOrWhiteSpace(city))
                             updateContact.City = city;
 
                         Console.Write("Enter new phone number (leave blank to keep current): ");
-                        string phoneNumber = Utilities.SafeReadLine();
-                        if (Utilities.Back(phoneNumber))
+                        string phoneNumber = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(phoneNumber))
                             return;
 
-                        if (Utilities.Back(phoneNumber))
+                        if (Utilities.Utilities.Back(phoneNumber))
                             return;
                         if (!string.IsNullOrWhiteSpace(phoneNumber))
                             updateContact.PhoneNumber = phoneNumber;
 
                         Console.Write("Enter new email (leave blank to keep current): ");
-                        string email = Utilities.SafeReadLine();
-                        if (Utilities.Back(email))
+                        string email = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(email))
                             return;
 
-                        if (Utilities.Back(email))
+                        if (Utilities.Utilities.Back(email))
                             return;
                         if (!string.IsNullOrWhiteSpace(email))
                             updateContact.Email = email;
@@ -158,7 +159,7 @@ namespace AddressBook.Repositories
                     Console.WriteLine("\nInvalid input, only numbers allowed.");
                 }
 
-                Utilities.Stop();
+                Utilities.Utilities.Stop();
                 return;
             }
             // OPTION 2: UPDATE CONTACT FROM LIST
@@ -168,7 +169,7 @@ namespace AddressBook.Repositories
                 if (contacts.Count == 0)
                 {
                     Console.WriteLine("\nNo contacts to update.");
-                    Utilities.Stop();
+                    Utilities.Utilities.Stop();
                     return;
                 }
 
@@ -179,8 +180,8 @@ namespace AddressBook.Repositories
                 }
 
                 Console.Write("\nEnter the ID of the contact you want to update: ");
-                string input = Utilities.SafeReadLine();
-                if (Utilities.Back(input))
+                string input = Utilities.Utilities.SafeReadLine();
+                if (Utilities.Utilities.Back(input))
                     return;
 
                 if (int.TryParse(input, out int id))
@@ -189,26 +190,26 @@ namespace AddressBook.Repositories
                     if (updateContact != null)
                     {
                         Console.Clear();
-                        Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
+                        Utilities.Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
                         Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
 
                         Console.Write("\nEnter new first name (leave blank to keep current): ");
-                        string firstName = Utilities.SafeReadLine();
-                        if (Utilities.Back(firstName))
+                        string firstName = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(firstName))
                             return;
                         if (!string.IsNullOrWhiteSpace(firstName))
                             updateContact.FirstName = firstName;
 
                         Console.Write("Enter new last name (leave blank to keep current): ");
-                        string lastName = Utilities.SafeReadLine();
-                        if (Utilities.Back(lastName))
+                        string lastName = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(lastName))
                             return;
                         if (!string.IsNullOrWhiteSpace(lastName))
                             updateContact.LastName = lastName;
 
                         Console.Write("Enter new address (leave blank to keep current): ");
-                        string address = Utilities.SafeReadLine();
-                        if (Utilities.Back(address))
+                        string address = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(address))
                             return;
                         if (!string.IsNullOrWhiteSpace(address))
                             updateContact.Address = address;
@@ -216,7 +217,7 @@ namespace AddressBook.Repositories
                         Console.Write(
                             "Enter new ZIP code (must be 5 numbers, leave blank to keep current): "
                         );
-                        string zipCode = Utilities.SafeReadLine();
+                        string zipCode = Utilities.Utilities.SafeReadLine();
                         if (!string.IsNullOrWhiteSpace(zipCode))
                         {
                             if (zipCode.Length == 5 && zipCode.All(char.IsDigit))
@@ -226,22 +227,22 @@ namespace AddressBook.Repositories
                         }
 
                         Console.Write("Enter new city (leave blank to keep current): ");
-                        string city = Utilities.SafeReadLine();
-                        if (Utilities.Back(city))
+                        string city = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(city))
                             return;
                         if (!string.IsNullOrWhiteSpace(city))
                             updateContact.City = city;
 
                         Console.Write("Enter new phone number (leave blank to keep current): ");
-                        string phoneNumber = Utilities.SafeReadLine();
-                        if (Utilities.Back(phoneNumber))
+                        string phoneNumber = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(phoneNumber))
                             return;
                         if (!string.IsNullOrWhiteSpace(phoneNumber))
                             updateContact.PhoneNumber = phoneNumber;
 
                         Console.Write("Enter new email (leave blank to keep current): ");
-                        string email = Utilities.SafeReadLine();
-                        if (Utilities.Back(email))
+                        string email = Utilities.Utilities.SafeReadLine();
+                        if (Utilities.Utilities.Back(email))
                             return;
                         if (!string.IsNullOrWhiteSpace(email))
                             updateContact.Email = email;
@@ -259,7 +260,7 @@ namespace AddressBook.Repositories
                     Console.WriteLine("\nInvalid input, only numbers allowed.");
                 }
 
-                Utilities.Stop();
+                Utilities.Utilities.Stop();
             }
         }
     }

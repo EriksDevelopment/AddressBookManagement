@@ -1,11 +1,9 @@
 using AddressBook.Models;
 
-
 namespace AddressBook.Repositories
 {
     partial class ContactRepository
     {
-
         public void LoadContactsFromFile()
         {
             if (!File.Exists("Contacts.txt"))

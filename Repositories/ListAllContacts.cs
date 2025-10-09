@@ -1,4 +1,4 @@
-using AddressBook.Helpers;
+using AddressBook.Utilities;
 
 namespace AddressBook.Repositories
 {
@@ -8,7 +8,7 @@ namespace AddressBook.Repositories
         public void ListAllContacts()
         {
             Console.Clear();
-            Utilities.OrderMessage("\n|--- LIST ALL CONTACTS ---|\n");
+            Utilities.Utilities.OrderMessage("\n|--- LIST ALL CONTACTS ---|\n");
 
             if (contacts.Count == 0)
             {
@@ -21,7 +21,7 @@ namespace AddressBook.Repositories
                     Console.WriteLine(c);
                 }
             }
-            Utilities.Stop();
+            Utilities.Utilities.Stop();
         }
     }
 }

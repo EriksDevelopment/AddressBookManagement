@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace AddressBook.Helpers
+namespace AddressBook.Utilities
 {
     public static class Utilities
     {
@@ -22,13 +22,11 @@ namespace AddressBook.Helpers
             Console.ReadKey();
         }
 
-
         // METHOD TO PRINT A MESSAGE (HEADER) IN THE CONSOLE
         public static void OrderMessage(string message)
         {
             Console.WriteLine(message);
         }
-
 
         // METHOD TO CHECK IF THE USER WANTS TO GO BACK TO THE PREVIOUS MENU
         public static bool Back(string input)
@@ -36,13 +34,11 @@ namespace AddressBook.Helpers
             return input?.ToLower() == "0";
         }
 
-
         // METHOD TO SAFELY READ A LINE FROM THE CONSOLE WITHOUT WARNINGS
         public static string SafeReadLine()
         {
             return (Console.ReadLine() ?? "").Trim();
         }
-
 
         // METHOD TO HIGHLIGHT THE MATCHING PART OF A STRING
         public static void HighlightMatch(string text, string search)
