@@ -1,4 +1,4 @@
-using AddressBook.Utilities;
+using AddressBook.Helpers;
 
 namespace AddressBook.Repositories
 {
@@ -11,16 +11,16 @@ namespace AddressBook.Repositories
             while (run)
             {
                 Console.Clear();
-                Utilities.Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
+                Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
 
                 if (contacts.Count == 0)
                 {
                     Console.WriteLine("\nNo contacts to delete.");
-                    Utilities.Utilities.Stop();
+                    Utilities.Stop();
                     return;
                 }
                 Console.Clear();
-                Utilities.Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
+                Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
                 Console.WriteLine("\n[1] Search contact");
                 Console.WriteLine("\n[2] Full list");
                 Console.Write("\nYour choice: ");
@@ -38,7 +38,7 @@ namespace AddressBook.Repositories
                         break;
                     default:
                         Console.WriteLine("Invalid choice, must be a number and [1] - [2]");
-                        Utilities.Utilities.Stop();
+                        Utilities.Stop();
                         return;
                 }
             }
@@ -47,7 +47,7 @@ namespace AddressBook.Repositories
         public void DeleteContactSearch()
         {
             Console.Clear();
-            Utilities.Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
+            Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
             Console.Write("\nEnter name of the contact you want to delete: ");
             string search = Console.ReadLine()!;
 
@@ -59,14 +59,14 @@ namespace AddressBook.Repositories
                 .ToList();
 
             Console.Clear();
-            Utilities.Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
+            Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
 
             if (foundContacts.Count == 0 || string.IsNullOrWhiteSpace(search))
             {
                 Console.Clear();
-                Utilities.Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
+                Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
                 Console.WriteLine($"\nNo contacts found with search: {search}");
-                Utilities.Utilities.Stop();
+                Utilities.Stop();
                 return;
             }
 
@@ -75,9 +75,9 @@ namespace AddressBook.Repositories
             foreach (var c in foundContacts)
             {
                 Console.Write($"\nID: [{c.Id}] ");
-                Utilities.Utilities.HighlightMatch(c.FirstName, search);
+                Utilities.HighlightMatch(c.FirstName, search);
                 Console.Write(", ");
-                Utilities.Utilities.HighlightMatch(c.LastName, search);
+                Utilities.HighlightMatch(c.LastName, search);
                 Console.Write($", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n");
             }
 
@@ -92,7 +92,7 @@ namespace AddressBook.Repositories
                     contacts.Remove(deleteContact);
                     SaveContactsToFile();
                     Console.Write("\nDeleting contact");
-                    Utilities.Utilities.Loader();
+                    Utilities.Loader();
                     Console.WriteLine($"\nContact {deleteContact.FirstName} is deleted!");
                 }
                 else
@@ -104,13 +104,13 @@ namespace AddressBook.Repositories
             {
                 Console.WriteLine("\nInvalid ID format.");
             }
-            Utilities.Utilities.Stop();
+            Utilities.Stop();
         }
 
         public void DeleteContactList()
         {
             Console.Clear();
-            Utilities.Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
+            Utilities.OrderMessage("\n|--- DELETE CONTACT ---|\n");
 
             Console.WriteLine("\nDelete from list:\n");
             foreach (var c in contacts)
@@ -129,7 +129,7 @@ namespace AddressBook.Repositories
                     contacts.Remove(deleteContact);
                     SaveContactsToFile();
                     Console.Write("\nDeleting contact");
-                    Utilities.Utilities.Loader();
+                    Utilities.Loader();
                     Console.WriteLine($"\nContact {deleteContact.FirstName} is deleted!");
                 }
                 else
@@ -141,7 +141,7 @@ namespace AddressBook.Repositories
             {
                 Console.WriteLine("\nInvalid ID format.");
             }
-            Utilities.Utilities.Stop();
+            Utilities.Stop();
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace AddressBook.Utilities
+namespace AddressBook.Helpers
 {
     public static class Utilities
     {

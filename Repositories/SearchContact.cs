@@ -1,4 +1,4 @@
-using AddressBook.Utilities;
+using AddressBook.Helpers;
 
 namespace AddressBook.Repositories
 {
@@ -10,19 +10,19 @@ namespace AddressBook.Repositories
             while (true)
             {
                 Console.Clear();
-                Utilities.Utilities.OrderMessage("\n|--- SEARCH CONTACT ---|\n");
+                Utilities.OrderMessage("\n|--- SEARCH CONTACT ---|\n");
 
                 Console.WriteLine("[1] Search contact by name\n");
                 Console.WriteLine("[2] Search contact by City or ZIP code");
                 Console.Write("\nYour choice: ");
-                string choice = Utilities.Utilities.SafeReadLine().ToLower();
+                string choice = Utilities.SafeReadLine().ToLower();
                 if (choice == "1")
                 {
                     Console.Clear();
-                    Utilities.Utilities.OrderMessage("\n|--- SEARCH CONTACT ---|\n");
+                    Utilities.OrderMessage("\n|--- SEARCH CONTACT ---|\n");
                     Console.Write("\nSearch for contact (firstname or lastname): ");
 
-                    string search = Utilities.Utilities.SafeReadLine();
+                    string search = Utilities.SafeReadLine();
 
                     var contactsFound = contacts
                         .Where(c =>
@@ -37,7 +37,7 @@ namespace AddressBook.Repositories
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"({contactsFound.Count} results)");
                         Console.ResetColor();
-                        Utilities.Utilities.Stop();
+                        Utilities.Stop();
                         return;
                     }
 
@@ -49,9 +49,9 @@ namespace AddressBook.Repositories
                     foreach (var c in contactsFound)
                     {
                         Console.Write($"\nID: [{c.Id}] ");
-                        Utilities.Utilities.HighlightMatch(c.FirstName, search);
+                        Utilities.HighlightMatch(c.FirstName, search);
                         Console.Write(", ");
-                        Utilities.Utilities.HighlightMatch(c.LastName, search);
+                        Utilities.HighlightMatch(c.LastName, search);
                         Console.Write(
                             $", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n"
                         );
@@ -61,10 +61,10 @@ namespace AddressBook.Repositories
                 else if (choice == "2")
                 {
                     Console.Clear();
-                    Utilities.Utilities.OrderMessage("\n|--- SEARCH CONTACT ---|\n");
+                    Utilities.OrderMessage("\n|--- SEARCH CONTACT ---|\n");
                     Console.Write("\nSearch for contact (city or ZIP code): ");
 
-                    string search = Utilities.Utilities.SafeReadLine();
+                    string search = Utilities.SafeReadLine();
 
                     var contactsFound = contacts
                         .Where(c =>
@@ -80,7 +80,7 @@ namespace AddressBook.Repositories
                         Console.WriteLine($"({contactsFound.Count} results)");
                         Console.ResetColor();
 
-                        Utilities.Utilities.Stop();
+                        Utilities.Stop();
                         return;
                     }
 
@@ -93,9 +93,9 @@ namespace AddressBook.Repositories
                     {
                         Console.Write($"\nID: [{c.Id}] ");
                         Console.Write($"{c.FirstName}, {c.LastName}, {c.Address}, ");
-                        Utilities.Utilities.HighlightMatch(c.City, search);
+                        Utilities.HighlightMatch(c.City, search);
                         Console.Write(", ");
-                        Utilities.Utilities.HighlightMatch(c.ZipCode, search);
+                        Utilities.HighlightMatch(c.ZipCode, search);
                         Console.WriteLine($", {c.PhoneNumber}, {c.Email}\n");
                     }
                     break;
@@ -106,7 +106,7 @@ namespace AddressBook.Repositories
                     Thread.Sleep(1000);
                 }
             }
-            Utilities.Utilities.Stop();
+            Utilities.Stop();
         }
     }
 }

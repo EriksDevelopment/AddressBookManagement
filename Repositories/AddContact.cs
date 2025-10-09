@@ -1,5 +1,5 @@
+using AddressBook.Helpers;
 using AddressBook.Models;
-using AddressBook.Utilities;
 
 namespace AddressBook.Repositories
 {
@@ -11,7 +11,7 @@ namespace AddressBook.Repositories
             Contacts c = new Contacts();
 
             Console.Clear();
-            Utilities.Utilities.OrderMessage("\n|--- ADD CONTACT ---|\n");
+            Utilities.OrderMessage("\n|--- ADD CONTACT ---|\n");
             Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
             Console.Write("Add contact:\n");
 
@@ -19,8 +19,8 @@ namespace AddressBook.Repositories
             do
             {
                 Console.Write("\nEnter first name: ");
-                c.FirstName = Utilities.Utilities.SafeReadLine();
-                if (Utilities.Utilities.Back(c.FirstName))
+                c.FirstName = Utilities.SafeReadLine();
+                if (Utilities.Back(c.FirstName))
                     return;
 
                 if (string.IsNullOrWhiteSpace(c.FirstName))
@@ -40,7 +40,7 @@ namespace AddressBook.Repositories
             {
                 Console.Write("\nEnter last name: ");
                 c.LastName = Console.ReadLine() ?? "";
-                if (Utilities.Utilities.Back(c.LastName))
+                if (Utilities.Back(c.LastName))
                     return;
 
                 if (string.IsNullOrWhiteSpace(c.LastName))
@@ -59,8 +59,8 @@ namespace AddressBook.Repositories
             do
             {
                 Console.Write("\nEnter address: ");
-                c.Address = Utilities.Utilities.SafeReadLine();
-                if (Utilities.Utilities.Back(c.Address))
+                c.Address = Utilities.SafeReadLine();
+                if (Utilities.Back(c.Address))
                     return;
 
                 if (string.IsNullOrWhiteSpace(c.Address))
@@ -77,8 +77,8 @@ namespace AddressBook.Repositories
                 // Console.WriteLine("Press [B] and ENTER to go back to main menu.\n\n");
 
                 Console.Write("\nEnter ZIP code (must be 5 numbers): ");
-                zipCode = Utilities.Utilities.SafeReadLine();
-                if (Utilities.Utilities.Back(zipCode))
+                zipCode = Utilities.SafeReadLine();
+                if (Utilities.Back(zipCode))
                     return;
 
                 if (string.IsNullOrWhiteSpace(zipCode))
@@ -103,9 +103,9 @@ namespace AddressBook.Repositories
             do
             {
                 Console.Write("\nEnter city: ");
-                c.City = Utilities.Utilities.SafeReadLine();
+                c.City = Utilities.SafeReadLine();
 
-                if (Utilities.Utilities.Back(c.City))
+                if (Utilities.Back(c.City))
                     return;
 
                 if (string.IsNullOrWhiteSpace(c.City))
@@ -125,8 +125,8 @@ namespace AddressBook.Repositories
             do
             {
                 Console.Write("\nEnter phone number: ");
-                phone = Utilities.Utilities.SafeReadLine();
-                if (Utilities.Utilities.Back(phone))
+                phone = Utilities.SafeReadLine();
+                if (Utilities.Back(phone))
                     return;
 
                 if (string.IsNullOrWhiteSpace(phone))
@@ -151,9 +151,9 @@ namespace AddressBook.Repositories
             do
             {
                 Console.Write("\nEnter email: ");
-                c.Email = Utilities.Utilities.SafeReadLine();
+                c.Email = Utilities.SafeReadLine();
 
-                if (Utilities.Utilities.Back(c.Email))
+                if (Utilities.Back(c.Email))
                     return;
 
                 if (string.IsNullOrWhiteSpace(c.Email))
@@ -184,10 +184,10 @@ namespace AddressBook.Repositories
             contacts.Add(c);
 
             Console.Write("\nAdding contact");
-            Utilities.Utilities.Loader();
+            Utilities.Loader();
             SaveContactsToFile();
             Console.WriteLine("\nContact added!");
-            Utilities.Utilities.Stop();
+            Utilities.Stop();
         }
     }
 }

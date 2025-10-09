@@ -1,6 +1,5 @@
-﻿using System;
+﻿using AddressBook.Helpers;
 using AddressBook.Repositories;
-using AddressBook.Utilities;
 
 namespace AddressBook
 {
@@ -16,7 +15,7 @@ namespace AddressBook
             while (run)
             {
                 Console.Clear();
-                Utilities.Utilities.OrderMessage("\n|--- CONTACT BOOK ---|\n");
+                Utilities.OrderMessage("\n|--- CONTACT BOOK ---|\n");
 
                 Console.WriteLine("\n[1] Add contact");
                 Console.WriteLine("\n[2] Update contact");
@@ -46,7 +45,7 @@ namespace AddressBook
                         break;
                     case "x":
                         Console.Write("\nQuitting");
-                        Utilities.Utilities.Loader();
+                        Helpers.Utilities.Loader();
                         return;
 
                     default:
