@@ -13,7 +13,7 @@ namespace AddressBook.Models
 
         public override string ToString()
         {
-            return $"\n[{Id}] {FirstName} {LastName}, {Address}, {ZipCode} {City}, {PhoneNumber}, {Email}";
+            return $"\nID: [{Id}] {FirstName} {LastName}, {Address}, {ZipCode} {City}, {PhoneNumber}, {Email}";
         }
     }
 }

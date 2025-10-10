@@ -24,7 +24,13 @@ namespace AddressBook
                 Console.WriteLine("\n[5] Delete contact");
                 Console.WriteLine("\n[X] = Quit");
                 Console.Write("\nYour choice: ");
-                var Choice = Console.ReadLine().ToLower();
+                var Choice = Utilities.SafeReadLine().ToLower();
+                if (Choice == "x")
+                {
+                    Console.Write("\nQuitting");
+                    Utilities.Loader();
+                    break;
+                }
 
                 switch (Choice)
                 {
