@@ -68,7 +68,12 @@ namespace AddressBook.Repositories
                     Console.WriteLine("No empty feilds allowed!");
                     Thread.Sleep(1000);
                 }
-            } while (string.IsNullOrWhiteSpace(c.Address));
+                else if (char.IsDigit(c.Address[0]))
+                {
+                    Console.WriteLine("Cant start with numbers!");
+                    Thread.Sleep(1000);
+                }
+            } while (string.IsNullOrWhiteSpace(c.Address) || char.IsDigit(c.Address[0]));
 
             // ZIP CODE
             string zipCode;
