@@ -53,7 +53,7 @@ namespace AddressBook.Repositories
                     Console.WriteLine("No numbers allowed!");
                     Thread.Sleep(1000);
                 }
-            } while (string.IsNullOrWhiteSpace(c.LastName) || c.FirstName.Any(char.IsDigit));
+            } while (string.IsNullOrWhiteSpace(c.LastName) || c.LastName.Any(char.IsDigit));
 
             // ADDRESS
             do
