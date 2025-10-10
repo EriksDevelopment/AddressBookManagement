@@ -1,9 +1,9 @@
 1, Maja, Andersson, Stormvägen 34, 28453, Stockholm, 0738453756, Maja.Andersson@gmail.com
 2, Erik, Nilsson, Björkvägen 12, 18245, Täby, 0701234567, Erik.Nilsson@gmail.com
 3, Sara, Lind, Ekvägen 8, 41123, Göteborg, 0729876543, Sara.Lind@gmail.com
-4, Johan,fasd,sdaf, 75231,dsaf,afsd,fasd
+4,54325,5432,5324, 75231,dsaf,afsd,fasd
 5, Lisa, Karlsson, Rönnvägen 22, 90345, Umeå, 0739988776, Lisa.Karlsson@gmail.com
-6, Daniel, Persson, Granvägen 9, 21456, Malmö, 0702233445, Daniel.Persson@gmail.com
+6,micke, Persson, Granvägen 9, 21456, Malmö, 0702233445, Daniel.Persson@gmail.com
 7, Elin, Svensson, Lönnvägen 15, 70234, Örebro, 0765544332, Elin.Svensson@gmail.com
 8, Andreas, Olsson, Björkgatan 17, 98131, Kiruna, 0724455667, Andreas.Olsson@gmail.com
 9, Karin, Gustafsson, Blomstergatan 4, 39234, Kalmar, 0706677889, Karin.Gustafsson@gmail.com
@@ -14,17 +14,17 @@
 14, Oscar, Dahl, Norrgatan 14, 72212, Västerås, 0708899776, Oscar.Dahl@gmail.com
 15, Julia, Eklund, Strandvägen 3, 11456, Stockholm, 0725544331, Julia.Eklund@gmail.com
 16, Anton, Nyström, Parkvägen 9, 54145, Skövde, 0766677999, Anton.Nystrom@gmail.com
-17, Amanda, Larsson, Solvägen 25, 60245, Norrköping, 0734556677, Amanda.Larsson@gmail.com
+17, Amanda, Larsson,3,44444,fff, 0734556677,fff@fsad
 18, Patrik, Jonsson, Kvarnvägen 11, 50434, Borås, 0702345678, Patrik.Jonsson@gmail.com
 19, Clara, Lundqvist, Ekbacken 6, 44312, Lerum, 0762233445, Clara.Lundqvist@gmail.com
 20, Victor, Åberg, Hamngatan 9, 85231, Sundsvall, 0726677889, Victor.Aberg@gmail.com
 21, Matilda, Henriksson, Ringvägen 30, 62145, Visby, 0739988772, Matilda.Henriksson@gmail.com
 22, Robin, Holmgren, Tallbacken 4, 87145, Härnösand, 0707766554, Robin.Holmgren@gmail.com
-23, Felicia, Berg, Ängsbacken 7, 43445, Kungsbacka, 0723332211, Felicia.Berg@gmail.com
+23, Felicia,ffff,ff, 43445,f,f,f
 24,adfsa, Ek,d, 53145, Lidköping,dfa, Simon.Ek@gmail.com
 25, Nora, Sahlberg, Sjögatan 12, 97231, Luleå, 0733344556, Nora.Sahlberg@gmail.com
 26, Elias, Ström, Granitvägen 8, 73312, Sala, 0709988775, Elias.Strom@gmail.com
 27, Isabelle, Falk, Sandvägen 10, 44234, Kungälv, 0766677882, Isabelle.Falk@gmail.com
 28, Adam, Wallin, Kyrkogatan 1, 85231, Sundsvall, 0703344559, Adam.Wallin@gmail.com
-29, Ebba, Forsberg, Lillgatan 22, 39245, Kalmar, 0726677883, Ebba.Forsberg@gmail.com
+29,bertil, Forsberg, Lillgatan 22, 39245, Kalmar, 0726677883, Ebba.Forsberg@gmail.com
 30,fafadsf,443,43, 21133, Malmö, 0769988771, Kevin.Hakansson@gmail.com

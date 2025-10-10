@@ -64,17 +64,24 @@ namespace AddressBook.Repositories
                             $", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n"
                         );
                     }
+                    int id;
 
-                    Console.Write("\nEnter the ID of the contact you want to update: ");
-                    string input = Utilities.SafeReadLine();
-                    if (Utilities.Back(input))
-                        return;
-
-                    if (!int.TryParse(input, out int id))
+                    while (true)
                     {
-                        Console.WriteLine("\nInvalid input, only numbers allowed.");
-                        Utilities.Stop();
-                        continue;
+                        Console.Write("\nEnter the ID of the contact you want to update: ");
+                        string input = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(input))
+                            return;
+
+                        if (!int.TryParse(input, out id))
+                        {
+                            Console.WriteLine("\nInvalid input, only numbers allowed.");
+                            Thread.Sleep(1000);
+                            continue;
+                        }
+
+                        break;
                     }
 
                     var updateContact = contacts.FirstOrDefault(c => c.Id == id);
@@ -89,19 +96,47 @@ namespace AddressBook.Repositories
                     Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
                     Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
 
-                    Console.Write("Enter new first name (leave blank to keep current): ");
-                    string firstName = Utilities.SafeReadLine();
-                    if (Utilities.Back(firstName))
-                        return;
+                    string firstName;
+                    do
+                    {
+                        Console.Write("Enter new first name (leave blank to keep current): ");
+                        firstName = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(firstName))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(firstName))
+                            break; // tillåter tomt — behåll nuvarande värde
+
+                        if (firstName.Any(char.IsDigit))
+                        {
+                            Console.WriteLine("No numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (firstName.Any(char.IsDigit));
+
                     if (!string.IsNullOrWhiteSpace(firstName))
                         updateContact.FirstName = firstName;
 
-                    Console.Write("Enter new last name (leave blank to keep current): ");
-                    string lastName = Utilities.SafeReadLine();
-                    if (Utilities.Back(lastName))
-                        return;
-                    if (Utilities.Back(lastName))
-                        return;
+                    string lastName;
+                    do
+                    {
+                        Console.Write("Enter new last name (leave blank to keep current): ");
+                        lastName = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(lastName))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(lastName))
+                            break;
+
+                        if (lastName.Any(char.IsDigit))
+                        {
+                            Console.WriteLine("Numbers are not allowed in the name!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (lastName.Any(char.IsDigit));
+
                     if (!string.IsNullOrWhiteSpace(lastName))
                         updateContact.LastName = lastName;
 
@@ -113,48 +148,109 @@ namespace AddressBook.Repositories
                     if (!string.IsNullOrWhiteSpace(address))
                         updateContact.Address = address;
 
-                    Console.Write(
-                        "Enter new ZIP code (must be 5 numbers, leave blank to keep current): "
+                    string zipCode;
+                    do
+                    {
+                        Console.Write(
+                            "Enter new ZIP code (must be 5 numbers, leave blank to keep current): "
+                        );
+                        zipCode = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(zipCode))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(zipCode))
+                            break;
+
+                        if (!zipCode.All(char.IsDigit))
+                        {
+                            Console.WriteLine("Only numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                        else if (zipCode.Length != 5)
+                        {
+                            Console.WriteLine("ZIP Code needs to be 5 digits!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (
+                        !string.IsNullOrWhiteSpace(zipCode)
+                        && (zipCode.Length != 5 || !zipCode.All(char.IsDigit))
                     );
-                    string zipCode = Utilities.SafeReadLine();
-                    if (Utilities.Back(zipCode))
-                        return;
 
                     if (!string.IsNullOrWhiteSpace(zipCode))
+                        updateContact.ZipCode = zipCode;
+
+                    string city;
+                    do
                     {
-                        if (zipCode.Length == 5 && zipCode.All(char.IsDigit))
-                            updateContact.ZipCode = zipCode;
-                        else
-                            Console.WriteLine("Invalid ZIP code, keeping old value.");
-                    }
+                        Console.Write("Enter new city (leave blank to keep current): ");
+                        city = Utilities.SafeReadLine();
 
-                    Console.Write("Enter new city (leave blank to keep current): ");
-                    string city = Utilities.SafeReadLine();
-                    if (Utilities.Back(city))
-                        return;
+                        if (Utilities.Back(city))
+                            return;
 
-                    if (Utilities.Back(city))
-                        return;
+                        if (string.IsNullOrWhiteSpace(city))
+                            break;
+
+                        if (city.Any(char.IsDigit))
+                        {
+                            Console.WriteLine("No numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (!string.IsNullOrWhiteSpace(city) && city.Any(char.IsDigit));
+
                     if (!string.IsNullOrWhiteSpace(city))
                         updateContact.City = city;
 
-                    Console.Write("Enter new phone number (leave blank to keep current): ");
-                    string phoneNumber = Utilities.SafeReadLine();
-                    if (Utilities.Back(phoneNumber))
-                        return;
+                    string phoneNumber;
+                    do
+                    {
+                        Console.Write("Enter new phone number (leave blank to keep current):  ");
+                        phoneNumber = Utilities.SafeReadLine();
 
-                    if (Utilities.Back(phoneNumber))
-                        return;
+                        if (Utilities.Back(phoneNumber))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(phoneNumber))
+                            break;
+
+                        if (!phoneNumber.All(char.IsDigit))
+                        {
+                            Console.WriteLine("Only numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                        else if (phoneNumber.Length != 10)
+                        {
+                            Console.WriteLine("Phone number needs to be 10 digits!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (
+                        !string.IsNullOrWhiteSpace(phoneNumber)
+                        && (phoneNumber.Length != 10 || !phoneNumber.All(char.IsDigit))
+                    );
+
                     if (!string.IsNullOrWhiteSpace(phoneNumber))
                         updateContact.PhoneNumber = phoneNumber;
 
-                    Console.Write("Enter new email (leave blank to keep current): ");
-                    string email = Utilities.SafeReadLine();
-                    if (Utilities.Back(email))
-                        return;
+                    string email;
+                    do
+                    {
+                        Console.Write("Enter new email (leave blank to keep current):  ");
+                        email = Utilities.SafeReadLine();
 
-                    if (Utilities.Back(email))
-                        return;
+                        if (Utilities.Back(email))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(email))
+                            break;
+
+                        if (!email.Contains("@"))
+                        {
+                            Console.WriteLine("Email must contain '@'!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (!string.IsNullOrWhiteSpace(email) && !email.Contains("@"));
+
                     if (!string.IsNullOrWhiteSpace(email))
                         updateContact.Email = email;
 
@@ -206,17 +302,47 @@ namespace AddressBook.Repositories
                     Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
                     Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
 
-                    Console.Write("\nEnter new first name (leave blank to keep current): ");
-                    string firstName = Utilities.SafeReadLine();
-                    if (Utilities.Back(firstName))
-                        return;
+                    string firstName;
+                    do
+                    {
+                        Console.Write("Enter new first name (leave blank to keep current): ");
+                        firstName = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(firstName))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(firstName))
+                            break;
+
+                        if (firstName.Any(char.IsDigit))
+                        {
+                            Console.WriteLine("No numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (firstName.Any(char.IsDigit));
+
                     if (!string.IsNullOrWhiteSpace(firstName))
                         updateContact.FirstName = firstName;
 
-                    Console.Write("Enter new last name (leave blank to keep current): ");
-                    string lastName = Utilities.SafeReadLine();
-                    if (Utilities.Back(lastName))
-                        return;
+                    string lastName;
+                    do
+                    {
+                        Console.Write("Enter new last name (leave blank to keep current): ");
+                        lastName = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(lastName))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(lastName))
+                            break;
+
+                        if (lastName.Any(char.IsDigit))
+                        {
+                            Console.WriteLine("Numbers are not allowed in the name!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (lastName.Any(char.IsDigit));
+
                     if (!string.IsNullOrWhiteSpace(lastName))
                         updateContact.LastName = lastName;
 
@@ -224,39 +350,113 @@ namespace AddressBook.Repositories
                     string address = Utilities.SafeReadLine();
                     if (Utilities.Back(address))
                         return;
+
                     if (!string.IsNullOrWhiteSpace(address))
                         updateContact.Address = address;
 
-                    Console.Write(
-                        "Enter new ZIP code (must be 5 numbers, leave blank to keep current): "
-                    );
-                    string zipCode = Utilities.SafeReadLine();
-                    if (!string.IsNullOrWhiteSpace(zipCode))
+                    string zipCode;
+                    do
                     {
-                        if (zipCode.Length == 5 && zipCode.All(char.IsDigit))
-                            updateContact.ZipCode = zipCode;
-                        else
-                            Console.WriteLine("Invalid ZIP code, keeping old value.");
-                    }
+                        Console.Write(
+                            "Enter new ZIP code (must be 5 numbers, leave blank to keep current): "
+                        );
+                        zipCode = Utilities.SafeReadLine();
 
-                    Console.Write("Enter new city (leave blank to keep current): ");
-                    string city = Utilities.SafeReadLine();
-                    if (Utilities.Back(city))
-                        return;
+                        if (Utilities.Back(zipCode))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(zipCode))
+                            break;
+
+                        if (!zipCode.All(char.IsDigit))
+                        {
+                            Console.WriteLine("Only numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                        else if (zipCode.Length != 5)
+                        {
+                            Console.WriteLine("ZIP Code needs to be 5 digits!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (
+                        !string.IsNullOrWhiteSpace(zipCode)
+                        && (zipCode.Length != 5 || !zipCode.All(char.IsDigit))
+                    );
+
+                    if (!string.IsNullOrWhiteSpace(zipCode))
+                        updateContact.ZipCode = zipCode;
+
+                    string city;
+                    do
+                    {
+                        Console.Write("Enter new city (leave blank to keep current): ");
+                        city = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(city))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(city))
+                            break;
+
+                        if (city.Any(char.IsDigit))
+                        {
+                            Console.WriteLine("No numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (!string.IsNullOrWhiteSpace(city) && city.Any(char.IsDigit));
+
                     if (!string.IsNullOrWhiteSpace(city))
                         updateContact.City = city;
 
-                    Console.Write("Enter new phone number (leave blank to keep current): ");
-                    string phoneNumber = Utilities.SafeReadLine();
-                    if (Utilities.Back(phoneNumber))
-                        return;
+                    string phoneNumber;
+                    do
+                    {
+                        Console.Write("Enter new phone number (leave blank to keep current):  ");
+                        phoneNumber = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(phoneNumber))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(phoneNumber))
+                            break;
+
+                        if (!phoneNumber.All(char.IsDigit))
+                        {
+                            Console.WriteLine("Only numbers allowed!");
+                            Thread.Sleep(1000);
+                        }
+                        else if (phoneNumber.Length != 10)
+                        {
+                            Console.WriteLine("Phone number needs to be 10 digits!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (
+                        !string.IsNullOrWhiteSpace(phoneNumber)
+                        && (phoneNumber.Length != 10 || !phoneNumber.All(char.IsDigit))
+                    );
+
                     if (!string.IsNullOrWhiteSpace(phoneNumber))
                         updateContact.PhoneNumber = phoneNumber;
 
-                    Console.Write("Enter new email (leave blank to keep current): ");
-                    string email = Utilities.SafeReadLine();
-                    if (Utilities.Back(email))
-                        return;
+                    string email;
+                    do
+                    {
+                        Console.Write("Enter new email (leave blank to keep current):  ");
+                        email = Utilities.SafeReadLine();
+
+                        if (Utilities.Back(email))
+                            return;
+
+                        if (string.IsNullOrWhiteSpace(email))
+                            break;
+
+                        if (!email.Contains("@"))
+                        {
+                            Console.WriteLine("Email must contain '@'!");
+                            Thread.Sleep(1000);
+                        }
+                    } while (!string.IsNullOrWhiteSpace(email) && !email.Contains("@"));
+
                     if (!string.IsNullOrWhiteSpace(email))
                         updateContact.Email = email;
 
@@ -270,8 +470,6 @@ namespace AddressBook.Repositories
                     Console.WriteLine("Invalid choice, must be a number and [1] - [2]");
                     Thread.Sleep(1000);
                 }
-
-                // Utilities.Stop();
             }
         }
     }
