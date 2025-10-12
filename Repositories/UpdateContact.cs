@@ -54,20 +54,23 @@ namespace AddressBook.Repositories
                     Console.WriteLine($"({contactsFound.Count} results)");
                     Console.ResetColor();
 
-                    foreach (var c in contactsFound)
-                    {
-                        Console.Write($"\nID: [{c.Id}] ");
-                        Utilities.HighlightMatch(c.FirstName, search);
-                        Console.Write(", ");
-                        Utilities.HighlightMatch(c.LastName, search);
-                        Console.Write(
-                            $", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n"
-                        );
-                    }
                     int id;
 
                     while (true)
                     {
+                        Console.Clear();
+                        Utilities.OrderMessage("\n|--- UPDATE CONTACT ---|\n");
+                        Console.WriteLine("Press [0] and ENTER to go back to main menu.\n\n");
+                        foreach (var c in contactsFound)
+                        {
+                            Console.Write($"\nID: [{c.Id}] ");
+                            Utilities.HighlightMatch(c.FirstName, search);
+                            Console.Write(", ");
+                            Utilities.HighlightMatch(c.LastName, search);
+                            Console.Write(
+                                $", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n"
+                            );
+                        }
                         Console.Write("\nEnter the ID of the contact you want to update: ");
                         string input = Utilities.SafeReadLine();
 
