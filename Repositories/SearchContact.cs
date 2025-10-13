@@ -4,7 +4,12 @@ namespace AddressBook.Repositories
 {
     partial class ContactRepository
     {
+        Validation validation;
         // METHOD TO SEARCH CONTACT
+        public ContactRepository()
+        {
+            validation = new Validation();
+        }
         public void SearchContact()
         {
             while (true)
@@ -16,7 +21,7 @@ namespace AddressBook.Repositories
                 Console.WriteLine("[2] Search contact by City or ZIP code");
                 Console.Write("\nYour choice: ");
                 string choice = Utilities.SafeReadLine().ToLower();
-                
+
                 if (choice == "1")
                 {
                     Console.Clear();
@@ -103,8 +108,7 @@ namespace AddressBook.Repositories
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice, must be a number and [1] - [2]");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("Invalid choice, must be a number and [1] - [2]");
                 }
             }
             Utilities.Stop();

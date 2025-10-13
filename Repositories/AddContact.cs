@@ -26,11 +26,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.FirstName))
                 {
-                    validation.ValidationResult("No empty feilds allowed!");
+                    validation.ValidationNoEmptyFieldsAllowedMessage();
                 }
                 else if (c.FirstName.Any(char.IsDigit))
                 {
-                    validation.ValidationResult("No numbers allowed!");
+                    validation.ValidationNoNumbersAllowedMessage();
                 }
             } while (string.IsNullOrWhiteSpace(c.FirstName) || c.FirstName.Any(char.IsDigit));
 
@@ -44,11 +44,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.LastName))
                 {
-                    validation.ValidationResult("No empty feilds allowed!");
+                    validation.ValidationNoEmptyFieldsAllowedMessage();
                 }
                 else if (c.LastName.Any(char.IsDigit))
                 {
-                    validation.ValidationResult("No numbers allowed!");
+                    validation.ValidationNoNumbersAllowedMessage();
                 }
             } while (string.IsNullOrWhiteSpace(c.LastName) || c.LastName.Any(char.IsDigit));
 
@@ -62,7 +62,7 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.Address))
                 {
-                    validation.ValidationResult("No empty feilds allowed!");
+                    validation.ValidationNoEmptyFieldsAllowedMessage();
 
                 }
                 else if (char.IsDigit(c.Address[0]))
@@ -84,11 +84,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(zipCode))
                 {
-                    validation.ValidationResult("No empty feilds allowed!");
+                    validation.ValidationNoEmptyFieldsAllowedMessage();
                 }
                 else if (!zipCode.All(char.IsDigit))
                 {
-                    validation.ValidationResult("Only numbers allowed!");
+                    validation.ValidationOnlyNumbersAllowedMessage();
                 }
                 else if (zipCode.Length != 5)
                 {
@@ -108,11 +108,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.City))
                 {
-                    validation.ValidationResult("No empty feilds allowed!");
+                    validation.ValidationNoEmptyFieldsAllowedMessage();
                 }
                 else if (c.City.Any(char.IsDigit))
                 {
-                    validation.ValidationResult("No numbers allowed!");
+                    validation.ValidationNoNumbersAllowedMessage();
                 }
             } while (string.IsNullOrWhiteSpace(c.City) || c.City.Any(char.IsDigit));
 
@@ -127,11 +127,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(phone))
                 {
-                    validation.ValidationResult("No empty feilds allowed!");
+                    validation.ValidationNoEmptyFieldsAllowedMessage();
                 }
                 else if (!phone.All(char.IsDigit))
                 {
-                    validation.ValidationResult("Only numbers allowed! (10)");
+                    validation.ValidationOnlyNumbersAllowedMessage();
                 }
                 else if (phone.Length != 10)
                 {
@@ -151,7 +151,7 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.Email))
                 {
-                    validation.ValidationResult("No empty feilds allowed!");
+                    validation.ValidationNoEmptyFieldsAllowedMessage();
                 }
                 else if (!c.Email.Contains("@"))
                 {

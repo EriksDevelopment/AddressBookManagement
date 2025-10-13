@@ -79,8 +79,7 @@ namespace AddressBook.Repositories
 
                         if (!int.TryParse(input, out id))
                         {
-                            Console.WriteLine("\nInvalid input, only numbers allowed.");
-                            Thread.Sleep(1000);
+                            validation.ValidationOnlyNumbersAllowedMessage();
                             continue;
                         }
 
@@ -113,8 +112,7 @@ namespace AddressBook.Repositories
 
                         if (firstName.Any(char.IsDigit))
                         {
-                            Console.WriteLine("No numbers allowed!");
-                            Thread.Sleep(1000);
+                            validation.ValidationNoNumbersAllowedMessage();
                         }
                     } while (firstName.Any(char.IsDigit));
 
@@ -135,8 +133,7 @@ namespace AddressBook.Repositories
 
                         if (lastName.Any(char.IsDigit))
                         {
-                            Console.WriteLine("Numbers are not allowed in the name!");
-                            Thread.Sleep(1000);
+                            validation.ValidationNoNumbersAllowedMessage();
                         }
                     } while (lastName.Any(char.IsDigit));
 
@@ -167,13 +164,11 @@ namespace AddressBook.Repositories
 
                         if (!zipCode.All(char.IsDigit))
                         {
-                            Console.WriteLine("Only numbers allowed!");
-                            Thread.Sleep(1000);
+                            validation.ValidationOnlyNumbersAllowedMessage();
                         }
                         else if (zipCode.Length != 5)
                         {
-                            Console.WriteLine("ZIP Code needs to be 5 digits!");
-                            Thread.Sleep(1000);
+                            validation.ValidationResult("ZIP Code needs to be 5 digits!");
                         }
                     } while (
                         !string.IsNullOrWhiteSpace(zipCode)
@@ -197,8 +192,7 @@ namespace AddressBook.Repositories
 
                         if (city.Any(char.IsDigit))
                         {
-                            Console.WriteLine("No numbers allowed!");
-                            Thread.Sleep(1000);
+                            validation.ValidationNoNumbersAllowedMessage();
                         }
                     } while (!string.IsNullOrWhiteSpace(city) && city.Any(char.IsDigit));
 
@@ -219,13 +213,11 @@ namespace AddressBook.Repositories
 
                         if (!phoneNumber.All(char.IsDigit))
                         {
-                            Console.WriteLine("Only numbers allowed!");
-                            Thread.Sleep(1000);
+                            validation.ValidationOnlyNumbersAllowedMessage();
                         }
                         else if (phoneNumber.Length != 10)
                         {
-                            Console.WriteLine("Phone number needs to be 10 digits!");
-                            Thread.Sleep(1000);
+                            validation.ValidationResult("Phone number needs to be 10 digits!");
                         }
                     } while (
                         !string.IsNullOrWhiteSpace(phoneNumber)
@@ -249,8 +241,7 @@ namespace AddressBook.Repositories
 
                         if (!email.Contains("@"))
                         {
-                            Console.WriteLine("Email must contain '@'!");
-                            Thread.Sleep(1000);
+                            validation.ValidationResult("Email must contain '@'!");
                         }
                     } while (!string.IsNullOrWhiteSpace(email) && !email.Contains("@"));
 
@@ -319,8 +310,7 @@ namespace AddressBook.Repositories
 
                         if (firstName.Any(char.IsDigit))
                         {
-                            Console.WriteLine("No numbers allowed!");
-                            Thread.Sleep(1000);
+                            validation.ValidationNoNumbersAllowedMessage();
                         }
                     } while (firstName.Any(char.IsDigit));
 
@@ -341,8 +331,7 @@ namespace AddressBook.Repositories
 
                         if (lastName.Any(char.IsDigit))
                         {
-                            Console.WriteLine("Numbers are not allowed in the name!");
-                            Thread.Sleep(1000);
+                            validation.ValidationNoNumbersAllowedMessage();
                         }
                     } while (lastName.Any(char.IsDigit));
 
@@ -373,13 +362,11 @@ namespace AddressBook.Repositories
 
                         if (!zipCode.All(char.IsDigit))
                         {
-                            Console.WriteLine("Only numbers allowed!");
-                            Thread.Sleep(1000);
+                            validation.ValidationOnlyNumbersAllowedMessage();
                         }
                         else if (zipCode.Length != 5)
                         {
-                            Console.WriteLine("ZIP Code needs to be 5 digits!");
-                            Thread.Sleep(1000);
+                            validation.ValidationResult("ZIP Code needs to be 5 digits!");
                         }
                     } while (
                         !string.IsNullOrWhiteSpace(zipCode)
@@ -403,8 +390,7 @@ namespace AddressBook.Repositories
 
                         if (city.Any(char.IsDigit))
                         {
-                            Console.WriteLine("No numbers allowed!");
-                            Thread.Sleep(1000);
+                            validation.ValidationNoNumbersAllowedMessage();
                         }
                     } while (!string.IsNullOrWhiteSpace(city) && city.Any(char.IsDigit));
 
@@ -425,13 +411,11 @@ namespace AddressBook.Repositories
 
                         if (!phoneNumber.All(char.IsDigit))
                         {
-                            Console.WriteLine("Only numbers allowed!");
-                            Thread.Sleep(1000);
+                            Console.ValidationOnlyNumbersAllowedMessage();
                         }
                         else if (phoneNumber.Length != 10)
                         {
-                            Console.WriteLine("Phone number needs to be 10 digits!");
-                            Thread.Sleep(1000);
+                            validation.ValidationResult("Phone number needs to be 10 digits!");
                         }
                     } while (
                         !string.IsNullOrWhiteSpace(phoneNumber)
@@ -455,8 +439,7 @@ namespace AddressBook.Repositories
 
                         if (!email.Contains("@"))
                         {
-                            Console.WriteLine("Email must contain '@'!");
-                            Thread.Sleep(1000);
+                            validation.ValidationResult("Email must contain '@'!");
                         }
                     } while (!string.IsNullOrWhiteSpace(email) && !email.Contains("@"));
 
@@ -470,8 +453,7 @@ namespace AddressBook.Repositories
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice, must be a number and [1] - [2]");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("Invalid choice, must be a number and [1] - [2]");
                 }
             }
         }

@@ -8,6 +8,7 @@ namespace AddressBook
         static void Main(string[] args)
         {
             ContactRepository addressBook = new ContactRepository();
+            Validation validation = new Validation();
             addressBook.LoadContactsFromFile();
 
             while (true)
@@ -15,17 +16,17 @@ namespace AddressBook
                 Console.Clear();
                 Utilities.OrderMessage("\n|--- CONTACT BOOK ---|\n");
 
-                Console.WriteLine("\n[1] Add contact");
-                Console.WriteLine("\n[2] Update contact");
-                Console.WriteLine("\n[3] Search contact");
-                Console.WriteLine("\n[4] List all contacts");
-                Console.WriteLine("\n[5] Delete contact");
-                Console.WriteLine("\n[X] = Quit");
+                Utilities.OrderMessage("\n[1] Add contact");
+                Utilities.OrderMessage("\n[2] Update contact");
+                Utilities.OrderMessage("\n[3] Search contact");
+                Utilities.OrderMessage("\n[4] List all contacts");
+                Utilities.OrderMessage("\n[5] Delete contact");
+                Utilities.OrderMessage("\n[X] = Quit");
                 Console.Write("\nYour choice: ");
                 var Choice = Utilities.SafeReadLine().ToLower();
                 if (Choice == "x")
                 {
-                    Console.Write("\nQuitting");
+                    Utilities.OrderMessage("\nQuitting");
                     Utilities.Loader();
                     break;
                 }
@@ -49,8 +50,7 @@ namespace AddressBook
                         break;
 
                     default:
-                        Console.WriteLine("Only number allowed (1-5)!");
-                        Thread.Sleep(1000);
+                        validation.ValidationResult("Only number allowed (1-5)!");
                         break;
                 }
             }
