@@ -9,6 +9,7 @@ namespace AddressBook.Repositories
         public void AddContact()
         {
             Contacts c = new Contacts();
+            Validation validation = new Validation();
 
             Console.Clear();
             Utilities.OrderMessage("\n|--- ADD CONTACT ---|\n");
@@ -25,13 +26,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.FirstName))
                 {
-                    Console.WriteLine("No empty feilds allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No empty feilds allowed!");
                 }
                 else if (c.FirstName.Any(char.IsDigit))
                 {
-                    Console.WriteLine("No numbers allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No numbers allowed!");
                 }
             } while (string.IsNullOrWhiteSpace(c.FirstName) || c.FirstName.Any(char.IsDigit));
 
@@ -45,13 +44,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.LastName))
                 {
-                    Console.WriteLine("No empty feilds allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No empty feilds allowed!");
                 }
                 else if (c.LastName.Any(char.IsDigit))
                 {
-                    Console.WriteLine("No numbers allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No numbers allowed!");
                 }
             } while (string.IsNullOrWhiteSpace(c.LastName) || c.LastName.Any(char.IsDigit));
 
@@ -65,13 +62,12 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.Address))
                 {
-                    Console.WriteLine("No empty feilds allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No empty feilds allowed!");
+
                 }
                 else if (char.IsDigit(c.Address[0]))
                 {
-                    Console.WriteLine("Cant start with numbers!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("Cant start with numbers!");
                 }
             } while (string.IsNullOrWhiteSpace(c.Address) || char.IsDigit(c.Address[0]));
 
@@ -88,18 +84,15 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(zipCode))
                 {
-                    Console.WriteLine("No empty feilds allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No empty feilds allowed!");
                 }
                 else if (!zipCode.All(char.IsDigit))
                 {
-                    Console.WriteLine("Only numbers allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("Only numbers allowed!");
                 }
                 else if (zipCode.Length != 5)
                 {
-                    Console.WriteLine("ZIP Code needs to be 5 digits!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("ZIP Code needs to be 5 digits!");
                 }
             } while (zipCode.Length != 5 || !zipCode.All(char.IsDigit));
             c.ZipCode = zipCode;
@@ -115,13 +108,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.City))
                 {
-                    Console.WriteLine("No empty feilds allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No empty feilds allowed!");
                 }
                 else if (c.City.Any(char.IsDigit))
                 {
-                    Console.WriteLine("No numbers allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No numbers allowed!");
                 }
             } while (string.IsNullOrWhiteSpace(c.City) || c.City.Any(char.IsDigit));
 
@@ -136,18 +127,15 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(phone))
                 {
-                    Console.WriteLine("No empty feilds allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No empty feilds allowed!");
                 }
                 else if (!phone.All(char.IsDigit))
                 {
-                    Console.WriteLine("Only numbers allowed! (10)");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("Only numbers allowed! (10)");
                 }
                 else if (phone.Length != 10)
                 {
-                    Console.WriteLine("Phone number needs to be 10 digits!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("Phone number needs to be 10 digits!");
                 }
             } while (phone.Length != 10 || !phone.All(char.IsDigit));
             c.PhoneNumber = phone;
@@ -163,13 +151,11 @@ namespace AddressBook.Repositories
 
                 if (string.IsNullOrWhiteSpace(c.Email))
                 {
-                    Console.WriteLine("No empty feilds allowed!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("No empty feilds allowed!");
                 }
                 else if (!c.Email.Contains("@"))
                 {
-                    Console.WriteLine("Email must contain '@'!");
-                    Thread.Sleep(1000);
+                    validation.ValidationResult("Email must contain '@'!");
                 }
             } while (
                 string.IsNullOrWhiteSpace(c.Email) || (c.Email != null && !c.Email.Contains("@"))
