@@ -10,9 +10,9 @@ namespace AddressBook
             ContactRepository addressBook = new ContactRepository();
             addressBook.LoadContactsFromFile();
 
-            bool run = true;
+            // bool run = true;
 
-            while (run)
+            while (true)
             {
                 Console.Clear();
                 Utilities.OrderMessage("\n|--- CONTACT BOOK ---|\n");
@@ -49,10 +49,10 @@ namespace AddressBook
                     case "5":
                         addressBook.DeleteContactMenu();
                         break;
-                    case "x":
-                        Console.Write("\nQuitting");
-                        Helpers.Utilities.Loader();
-                        return;
+                    // case "x":
+                    //     Console.Write("\nQuitting");
+                    //     Helpers.Utilities.Loader();
+                    //     break;
 
                     default:
                         Console.WriteLine("Only number allowed (1-5)!");
