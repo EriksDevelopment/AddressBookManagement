@@ -1,5 +1,5 @@
 1, Maja, Andersson, Stormvägen 34, 28453, Stockholm, 0738453756, Maja.Andersson@gmail.com
-2, Erik, Nilsson, Björkvägen 12, 18245, Täby, 0701234567, Erik.Nilsson@gmail.com
+2, Erik,bob, Björkvägen 12,12345,Göteborg, 0701234567, Erik.Nilsson@gmail.com
 3, Sara, Lind, Ekvägen 8, 41123, Göteborg, 0729876543, Sara.Lind@gmail.com
 4,54325,5432,5324, 75231,dsaf,afsd,fasd
 5, Lisa, Karlsson, Rönnvägen 22, 90345, Umeå, 0739988776, Lisa.Karlsson@gmail.com
@@ -20,7 +20,7 @@
 20, Victor, Åberg, Hamngatan 9, 85231, Sundsvall, 0726677889, Victor.Aberg@gmail.com
 21, Matilda, Henriksson, Ringvägen 30, 62145, Visby, 0739988772, Matilda.Henriksson@gmail.com
 22, Robin, Holmgren, Tallbacken 4, 87145, Härnösand, 0707766554, Robin.Holmgren@gmail.com
-23, Felicia,ffff,ff, 43445,f,f,f
+23, Felicia,ffff,45346,12345,f,f,f
 24,adfsa, Ek,d, 53145, Lidköping,dfa, Simon.Ek@gmail.com
 25, Nora, Sahlberg, Sjögatan 12, 97231, Luleå, 0733344556, Nora.Sahlberg@gmail.com
 26, Elias, Ström, Granitvägen 8, 73312, Sala, 0709988775, Elias.Strom@gmail.com

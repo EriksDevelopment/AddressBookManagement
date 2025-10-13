@@ -68,7 +68,7 @@ namespace AddressBook.Repositories
                             Console.Write(", ");
                             Utilities.HighlightMatch(c.LastName, search);
                             Console.Write(
-                                $", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n"
+                                $", {c.Address}, {c.ZipCode}, {c.City}, {c.PhoneNumber}, {c.Email}\n"
                             );
                         }
                         Console.Write("\nEnter the ID of the contact you want to update: ");
