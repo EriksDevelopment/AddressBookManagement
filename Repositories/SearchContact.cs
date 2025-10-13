@@ -16,6 +16,7 @@ namespace AddressBook.Repositories
                 Console.WriteLine("[2] Search contact by City or ZIP code");
                 Console.Write("\nYour choice: ");
                 string choice = Utilities.SafeReadLine().ToLower();
+                
                 if (choice == "1")
                 {
                     Console.Clear();
@@ -53,7 +54,7 @@ namespace AddressBook.Repositories
                         Console.Write(", ");
                         Utilities.HighlightMatch(c.LastName, search);
                         Console.Write(
-                            $", {c.Address}, {c.ZipCode} {c.City}, {c.PhoneNumber}, {c.Email}\n"
+                            $", {c.Address}, {c.ZipCode}, {c.City}, {c.PhoneNumber}, {c.Email}\n"
                         );
                     }
                     break;
