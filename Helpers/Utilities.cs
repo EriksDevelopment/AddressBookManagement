@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-
 namespace AddressBook.Helpers
 {
     public static class Utilities
@@ -18,7 +15,7 @@ namespace AddressBook.Helpers
         // METHOD TO MAKE A STOP IN THE CONSOLE
         public static void Stop()
         {
-            Console.WriteLine("\nPress any key to return to menu");
+            OrderMessage("\nPress any key to return to menu");
             Console.ReadKey();
         }
 
