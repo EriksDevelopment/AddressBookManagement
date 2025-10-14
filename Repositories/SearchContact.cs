@@ -1,10 +1,11 @@
 using AddressBook.Helpers;
+using AddressBook.Intterfaces;
 
 namespace AddressBook.Repositories
 {
     partial class ContactRepository
     {
-        Validation validation;
+        IValidation validation;
         // METHOD TO SEARCH CONTACT
         public ContactRepository()
         {

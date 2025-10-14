@@ -1,4 +1,5 @@
 ﻿using AddressBook.Helpers;
+using AddressBook.Intterfaces;
 using AddressBook.Repositories;
 
 namespace AddressBook
@@ -8,7 +9,7 @@ namespace AddressBook
         static void Main(string[] args)
         {
             ContactRepository addressBook = new ContactRepository();
-            Validation validation = new Validation();
+            IValidation validation = new Validation();
             addressBook.LoadContactsFromFile();
 
             while (true)

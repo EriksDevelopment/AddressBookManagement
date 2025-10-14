@@ -9,7 +9,7 @@ namespace AddressBook.Repositories
         public void AddContact()
         {
             Contacts c = new Contacts();
-            Validation validation = new Validation();
+            IValidation validation = new Validation();
 
             Console.Clear();
             Utilities.OrderMessage("\n|--- ADD CONTACT ---|\n");

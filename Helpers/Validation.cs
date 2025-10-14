@@ -1,6 +1,8 @@
-﻿namespace AddressBook.Helpers
+﻿using AddressBook.Intterfaces;
+
+namespace AddressBook.Helpers
 {
-    public class Validation
+    public class Validation : IValidation
     {
         public void ValidationResult(string message)
         {
